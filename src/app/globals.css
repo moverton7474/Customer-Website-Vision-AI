@@ -1,0 +1,154 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap');
+
+:root {
+  --visionary-dark: #1a1a2e;
+  --visionary-darker: #16162a;
+  --visionary-darkest: #0f0f1a;
+  --visionary-gold: #c9a962;
+  --visionary-gold-light: #d4bc7a;
+  --visionary-gold-dark: #b8944d;
+  --visionary-teal: #4A90A4;
+}
+
+@layer base {
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  body {
+    @apply bg-visionary-dark text-visionary-text-primary antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-6 py-3 
+           bg-gradient-to-r from-visionary-gold to-visionary-gold-light
+           text-visionary-darkest font-semibold rounded-lg
+           hover:from-visionary-gold-light hover:to-visionary-gold
+           transition-all duration-200 shadow-lg shadow-visionary-gold/20;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-6 py-3
+           border border-visionary-gold text-visionary-gold
+           font-medium rounded-lg hover:bg-visionary-gold/10
+           transition-all duration-200;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center px-4 py-2
+           text-visionary-text-secondary hover:text-visionary-text-primary
+           hover:bg-visionary-surface-elevated rounded-lg
+           transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-visionary-surface border border-visionary-border 
+           rounded-xl p-6 shadow-xl;
+  }
+
+  .input {
+    @apply w-full px-4 py-3 bg-visionary-darker border border-visionary-border
+           rounded-lg text-visionary-text-primary placeholder-visionary-text-muted
+           focus:outline-none focus:border-visionary-gold focus:ring-1 focus:ring-visionary-gold
+           transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-sm font-medium text-visionary-text-secondary mb-2;
+  }
+
+  .gold-text {
+    @apply text-transparent bg-clip-text bg-gradient-to-r 
+           from-visionary-gold via-visionary-gold-light to-visionary-gold;
+  }
+
+  .gold-border {
+    @apply border-visionary-gold/30 hover:border-visionary-gold/60 transition-colors;
+  }
+}
+
+/* Rich text editor styling */
+.ProseMirror {
+  @apply min-h-[200px] outline-none;
+}
+
+.ProseMirror p {
+  @apply mb-4;
+}
+
+.ProseMirror h1 {
+  @apply text-3xl font-bold mb-4;
+}
+
+.ProseMirror h2 {
+  @apply text-2xl font-bold mb-3;
+}
+
+.ProseMirror h3 {
+  @apply text-xl font-semibold mb-2;
+}
+
+.ProseMirror ul {
+  @apply list-disc list-inside mb-4;
+}
+
+.ProseMirror ol {
+  @apply list-decimal list-inside mb-4;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-visionary-gold pl-4 italic my-4 text-visionary-text-secondary;
+}
+
+.ProseMirror a {
+  @apply text-visionary-teal hover:text-visionary-teal-light underline;
+}
+
+.ProseMirror code {
+  @apply bg-visionary-surface-elevated px-2 py-1 rounded text-sm font-mono;
+}
+
+.ProseMirror pre {
+  @apply bg-visionary-darkest p-4 rounded-lg overflow-x-auto mb-4;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  @apply text-visionary-text-muted;
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-visionary-darker;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-visionary-border rounded-full hover:bg-visionary-border-light;
+}
+
+/* Selection */
+::selection {
+  @apply bg-visionary-gold/30;
+}
